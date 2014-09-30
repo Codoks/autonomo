@@ -19,4 +19,11 @@ html lang="pt"
 
   body class=body_class
     = render 'flash_messages'
-    = yield
+    header
+      = render partial: 'shared/header'
+
+    main
+      = yield
+
+    footer
+      = render partial: 'shared/footer'

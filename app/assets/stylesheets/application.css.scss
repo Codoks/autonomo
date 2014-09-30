@@ -1,6 +1,4 @@
-@import 'bourbon';
-@import 'base/base';
-@import 'neat';
+@import 'bootstrap.min';
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -15,4 +13,34 @@
  *
  *
  *= require_self
+ *= require_tree .
  */
+$header-height: 50px;
+$header-background: #D9534F;
+$font-color: #303030;
+$button-width: 289px;
+$button-height: 88px;
+$phone-img-height: 512px;
+
+.navbar{
+  background-color: $header-background;
+}
+main{
+  color: $font-color;
+  margin-top: $header-height;
+}
+#cadastre-btn {
+}
+.btn-lg { 
+  width: $button-width;
+}
+
+.right {
+  height: $phone-img-height;
+  position: relative;
+}
+
+.buttons {
+  position: absolute;
+  bottom: 10px;
+}
