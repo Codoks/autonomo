@@ -15,24 +15,28 @@
  *= require_self
  *= require_tree .
  */
-$header-height: 70px;
+$header-height: 50px;
 $header-background: #D9534F;
 $font-color: #303030;
 $button-width: 289px;
 $button-height: 88px;
 $phone-img-height: 512px;
+$footer-height: 30px;
+$footer-background: #494949;
 
 .navbar{
   background-color: $header-background;
 }
 main{
   color: $font-color;
-  margin-top: $header-height;
+  margin-top: $header-height + 20px;
+  margin-bottom: $footer-height + 10px;
 }
 #cadastre-btn {
 }
 .btn-lg { 
   width: $button-width;
+  margin-top: 10px;
 }
 
 .right {
@@ -43,4 +47,12 @@ main{
 .buttons {
   position: absolute;
   bottom: 10px;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: $footer-height;
+  background-color: $footer-background;
 }
