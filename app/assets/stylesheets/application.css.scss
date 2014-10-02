@@ -1,4 +1,4 @@
-@import 'bootstrap.min';
+@import 'bootstrap';
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -15,6 +15,7 @@
  *= require_self
  *= require_tree .
  */
+$white: #FFFFFF;
 $header-height: 50px;
 $header-background: #D9534F;
 $font-color: #303030;
@@ -32,7 +33,14 @@ main{
   margin-top: $header-height + 20px;
   margin-bottom: $footer-height + 10px;
 }
-#cadastre-btn {
+li{
+  a{
+    color: $white !important;
+    background-color: none !important;
+  }
+  a:hover{
+    background-color: none;
+  }
 }
 .btn-lg { 
   width: $button-width;

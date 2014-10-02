@@ -1,10 +1,14 @@
 class ProfessionalsController < ApplicationController
   before_action :set_professional, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /professionals
   # GET /professionals.json
   def index
     @professionals = Professional.all
+    if not current_user.admin?
+      redirect_to "/perfil"
+    end
   end
 
   # GET /professionals/1

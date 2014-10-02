@@ -9,3 +9,9 @@
         a href="/help" Ajuda
       li
         a href="/contact" Contato
+    ul.nav.navbar-right
+      li
+        - if user_signed_in?
+          = link_to "Sair", destroy_user_session_path, method: :delete
+        - else
+          a.modal-signin data-toggle="modal" data-target="#my-modal" Entrar
