@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141001232253) do
+ActiveRecord::Schema.define(version: 20141017232428) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,12 +25,53 @@ ActiveRecord::Schema.define(version: 20141001232253) do
 
   add_index "cidades", ["estado_id"], name: "index_cidades_on_estado_id", using: :btree
 
+  create_table "clients", force: true do |t|
+    t.string   "name"
+    t.string   "cpf_cnpj"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "clients", ["user_id"], name: "index_clients_on_user_id", using: :btree
+
   create_table "estados", force: true do |t|
     t.string   "nome"
     t.string   "sigla"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "estimates", force: true do |t|
+    t.integer  "client_id"
+    t.integer  "professional_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "open"
+    t.decimal  "value"
+  end
+
+  add_index "estimates", ["client_id"], name: "index_estimates_on_client_id", using: :btree
+  add_index "estimates", ["professional_id"], name: "index_estimates_on_professional_id", using: :btree
+
+  create_table "messages", force: true do |t|
+    t.text     "content"
+    t.integer  "estimate_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "messages", ["estimate_id"], name: "index_messages_on_estimate_id", using: :btree
+
+  create_table "profession_professionals", force: true do |t|
+    t.integer  "profession_id"
+    t.integer  "professional_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "profession_professionals", ["profession_id"], name: "index_profession_professionals_on_profession_id", using: :btree
+  add_index "profession_professionals", ["professional_id"], name: "index_profession_professionals_on_professional_id", using: :btree
 
   create_table "professionals", force: true do |t|
     t.string   "name"
@@ -39,9 +80,21 @@ ActiveRecord::Schema.define(version: 20141001232253) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+    t.integer  "profession_id"
   end
 
+  add_index "professionals", ["profession_id"], name: "index_professionals_on_profession_id", using: :btree
   add_index "professionals", ["user_id"], name: "index_professionals_on_user_id", using: :btree
+
+  create_table "professionals_professions", force: true do |t|
+    t.integer  "professional_id"
+    t.integer  "profession_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "professionals_professions", ["profession_id"], name: "index_professionals_professions_on_profession_id", using: :btree
+  add_index "professionals_professions", ["professional_id"], name: "index_professionals_professions_on_professional_id", using: :btree
 
   create_table "professions", force: true do |t|
     t.string   "name"
