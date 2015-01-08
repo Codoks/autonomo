@@ -14,4 +14,4 @@
         - if user_signed_in?
           = link_to "Sair", destroy_user_session_path, method: :delete
         - else
-          a.modal-signin data-toggle="modal" data-target="#my-modal" Entrar
+          = link_to "Entrar", "login"

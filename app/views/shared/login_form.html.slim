@@ -1,6 +1,6 @@
 #login-page
   .container
-    form.form-login action="index.html" 
+    = form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "form-login"}) do |f|
       h2.form-login-heading sign in now
       .login-wrap
         input.form-control autofocus="" placeholder=("User ID") type="text" /

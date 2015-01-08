@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   resources :professionals
 
+  get 'login' => 'home#login'
+
   devise_for :users, :controllers => {sessions: 'sessions'}
 
   # The priority is based upon order of creation: first created -> highest priority.
