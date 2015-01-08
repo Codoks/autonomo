@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141017232428) do
+ActiveRecord::Schema.define(version: 20141017234036) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,19 +59,12 @@ ActiveRecord::Schema.define(version: 20141017232428) do
     t.integer  "estimate_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "readed"
+    t.integer  "user_id"
   end
 
   add_index "messages", ["estimate_id"], name: "index_messages_on_estimate_id", using: :btree
-
-  create_table "profession_professionals", force: true do |t|
-    t.integer  "profession_id"
-    t.integer  "professional_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "profession_professionals", ["profession_id"], name: "index_profession_professionals_on_profession_id", using: :btree
-  add_index "profession_professionals", ["professional_id"], name: "index_profession_professionals_on_professional_id", using: :btree
+  add_index "messages", ["user_id"], name: "index_messages_on_user_id", using: :btree
 
   create_table "professionals", force: true do |t|
     t.string   "name"
@@ -101,6 +94,16 @@ ActiveRecord::Schema.define(version: 20141017232428) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "services", force: true do |t|
+    t.decimal  "valor"
+    t.integer  "estimate_id"
+    t.integer  "avaliation"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "services", ["estimate_id"], name: "index_services_on_estimate_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
